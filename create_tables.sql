@@ -110,6 +110,7 @@ CREATE TABLE imdb_db.dbo.movie (
 	imdb_code varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[type] varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	genre varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	produced_in int NULL,
 	director_id int NULL,
 	CONSTRAINT movie_PK PRIMARY KEY (id),
