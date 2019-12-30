@@ -7,7 +7,7 @@ CREATE SCHEMA dbo;
 -- DROP TABLE imdb_db.dbo.age_group GO
 
 CREATE TABLE imdb_db.dbo.age_group (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	min_age int NULL,
 	max_age int NULL,
 	name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -19,7 +19,7 @@ CREATE TABLE imdb_db.dbo.age_group (
 -- DROP TABLE imdb_db.dbo.country GO
 
 CREATE TABLE imdb_db.dbo.country (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	CONSTRAINT country_PK PRIMARY KEY (id)
 ) GO
@@ -29,7 +29,7 @@ CREATE TABLE imdb_db.dbo.country (
 -- DROP TABLE imdb_db.dbo.critic GO
 
 CREATE TABLE imdb_db.dbo.critic (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	first_name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	last_name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	CONSTRAINT critic_PK PRIMARY KEY (id)
@@ -40,7 +40,7 @@ CREATE TABLE imdb_db.dbo.critic (
 -- DROP TABLE imdb_db.dbo.actor GO
 
 CREATE TABLE imdb_db.dbo.actor (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	first_name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	last_name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	CONSTRAINT actor_PK PRIMARY KEY (id)
@@ -51,7 +51,7 @@ CREATE TABLE imdb_db.dbo.actor (
 -- DROP TABLE imdb_db.dbo.author GO
 
 CREATE TABLE imdb_db.dbo.author (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	first_name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	last_name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	CONSTRAINT author_PK PRIMARY KEY (id)
@@ -62,7 +62,7 @@ CREATE TABLE imdb_db.dbo.author (
 -- DROP TABLE imdb_db.dbo.director GO
 
 CREATE TABLE imdb_db.dbo.director (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	first_name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	last_name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	CONSTRAINT director_PK PRIMARY KEY (id)
@@ -73,7 +73,7 @@ CREATE TABLE imdb_db.dbo.director (
 -- DROP TABLE imdb_db.dbo.[file] GO
 
 CREATE TABLE imdb_db.dbo.[file] (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	[type] varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	CONSTRAINT file_PK PRIMARY KEY (id)
 ) GO
@@ -83,7 +83,7 @@ CREATE TABLE imdb_db.dbo.[file] (
 -- DROP TABLE imdb_db.dbo.[language] GO
 
 CREATE TABLE imdb_db.dbo.[language] (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	CONSTRAINT language_PK PRIMARY KEY (id)
 ) GO
@@ -93,7 +93,7 @@ CREATE TABLE imdb_db.dbo.[language] (
 -- DROP TABLE imdb_db.dbo.[user] GO
 
 CREATE TABLE imdb_db.dbo.[user] (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	username varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	password varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	CONSTRAINT user_PK PRIMARY KEY (id),
@@ -106,7 +106,7 @@ CREATE UNIQUE INDEX user_UN ON imdb_db.dbo.[user] (username) GO
 -- DROP TABLE imdb_db.dbo.movie GO
 
 CREATE TABLE imdb_db.dbo.movie (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	imdb_code varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[type] varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
@@ -169,7 +169,7 @@ CREATE TABLE imdb_db.dbo.author_write (
 -- DROP TABLE imdb_db.dbo.collection GO
 
 CREATE TABLE imdb_db.dbo.collection (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	user_id int NOT NULL,
 	name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	CONSTRAINT collection_PK PRIMARY KEY (id),
@@ -192,7 +192,7 @@ CREATE TABLE imdb_db.dbo.collection_movie (
 -- DROP TABLE imdb_db.dbo.film GO
 
 CREATE TABLE imdb_db.dbo.film (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	movie_id int NOT NULL,
 	CONSTRAINT film_PK PRIMARY KEY (id),
 	CONSTRAINT film_FK FOREIGN KEY (movie_id) REFERENCES imdb_db.dbo.movie(id)
@@ -203,7 +203,7 @@ CREATE TABLE imdb_db.dbo.film (
 -- DROP TABLE imdb_db.dbo.series GO
 
 CREATE TABLE imdb_db.dbo.series (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	movie_id int NOT NULL,
 	CONSTRAINT series_PK PRIMARY KEY (id),
 	CONSTRAINT series_FK FOREIGN KEY (movie_id) REFERENCES imdb_db.dbo.movie(id)
@@ -214,7 +214,7 @@ CREATE TABLE imdb_db.dbo.series (
 -- DROP TABLE imdb_db.dbo.season GO
 
 CREATE TABLE imdb_db.dbo.season (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	series_id int NOT NULL,
 	name varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	CONSTRAINT season_PK PRIMARY KEY (id),
@@ -226,7 +226,7 @@ CREATE TABLE imdb_db.dbo.season (
 -- DROP TABLE imdb_db.dbo.episode GO
 
 CREATE TABLE imdb_db.dbo.episode (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	season_id int NOT NULL,
 	CONSTRAINT episode_PK PRIMARY KEY (id),
 	CONSTRAINT episode_FK FOREIGN KEY (season_id) REFERENCES imdb_db.dbo.season(id)
@@ -237,7 +237,7 @@ CREATE TABLE imdb_db.dbo.episode (
 -- DROP TABLE imdb_db.dbo.film_file GO
 
 CREATE TABLE imdb_db.dbo.film_file (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	file_id int NOT NULL,
 	film_id int NOT NULL,
 	CONSTRAINT film_file_PK PRIMARY KEY (id),
@@ -250,7 +250,7 @@ CREATE TABLE imdb_db.dbo.film_file (
 -- DROP TABLE imdb_db.dbo.series_file GO
 
 CREATE TABLE imdb_db.dbo.series_file (
-	id int NOT NULL,
+	id int NOT NULL IDENTITY(0,1),
 	file_id int NOT NULL,
 	episode_id int NOT NULL,
 	CONSTRAINT series_file_PK PRIMARY KEY (id),
